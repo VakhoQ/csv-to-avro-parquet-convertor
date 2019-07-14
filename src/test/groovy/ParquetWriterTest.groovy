@@ -1,4 +1,5 @@
 import com.bigdata.avro.schema.Destination
+import com.bigdata.avro.schema.SampleSubmission
 import com.bigdata.avro.schema.Test
 import com.bigdata.avro.schema.Train
 import com.bigdata.avro.utils.ParquetDataWorker
@@ -15,7 +16,7 @@ class ParquetWriterTest extends Specification {
         FileUtils.deleteQuietly(output as File)
     }
 
-    def "create parquet destination record"() {
+    def "create parquet Destination record"() {
 
         given:
         ParquetDataWorker<Destination> reader = new ParquetDataWorker<>()
@@ -41,7 +42,7 @@ class ParquetWriterTest extends Specification {
     }
 
 
-    def "create parquet test record"() {
+    def "create parquet Test record"() {
 
         given:
         ParquetDataWorker<Test> reader = new ParquetDataWorker<>()
@@ -136,6 +137,29 @@ class ParquetWriterTest extends Specification {
         0     | "2014-08-11 07:46:59" | 2         | 3              | 66                    | 348                  | 48862              | "2234.2641"               | 12      | 0         | 1          | 9       | "2014-08-27" | "2014-08-31" | 2               | 0                 | 1           | 8250                | 1                        | 0          | 3   | 2               | 50            | 628          | 1
         1     | "2014-08-11 08:22:12" | 2         | 3              | 66                    | 348                  | 48862              | ""                        | 12      | 0         | 1          | 9       | "2014-08-29" | "2014-09-02" | 2               | 0                 | 1           | 8250                | 1                        | 1          | 1   | 2               | 50            | 628          | 1
     }
+
+
+    def "create SampleSubmission record"() {
+
+        given:
+        ParquetDataWorker<SampleSubmission> reader = new ParquetDataWorker<>()
+
+        String baseDir = getBaseDir()
+        String input = baseDir + File.separator + "sample_submission.csv"
+        output = File.createTempFile("csv-", ".parquet")
+        Schema schema = SampleSubmission.getClassSchema()
+
+        when:
+        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, SampleSubmission.class)
+
+        then:
+        noExceptionThrown()
+        reader.read(output).size() == 9
+        reader.read(output).get(0).getAt("id") == 0
+
+    }
+
+
 
 
     private def getBaseDir() {
