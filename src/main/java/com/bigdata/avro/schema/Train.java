@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Train extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1363823606514763504L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Train\",\"namespace\":\"com.bigdata.avro.schema\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"date_time\",\"type\":\"string\"},{\"name\":\"site_name\",\"type\":\"int\"},{\"name\":\"posa_continent\",\"type\":\"int\"},{\"name\":\"user_location_country\",\"type\":\"int\"},{\"name\":\"user_location_region\",\"type\":\"int\"},{\"name\":\"user_location_city\",\"type\":\"int\"},{\"name\":\"orig_destination_distance\",\"type\":\"float\"},{\"name\":\"user_id\",\"type\":\"int\"},{\"name\":\"is_mobile\",\"type\":\"int\"},{\"name\":\"is_package\",\"type\":\"int\"},{\"name\":\"channel\",\"type\":\"int\"},{\"name\":\"srch_ci\",\"type\":\"string\"},{\"name\":\"srch_co\",\"type\":\"string\"},{\"name\":\"srch_adults_cnt\",\"type\":\"int\"},{\"name\":\"srch_children_cnt\",\"type\":\"int\"},{\"name\":\"srch_rm_cnt\",\"type\":\"int\"},{\"name\":\"srch_destination_id\",\"type\":\"int\"},{\"name\":\"srch_destination_type_id\",\"type\":\"int\"},{\"name\":\"hotel_continent\",\"type\":\"int\"},{\"name\":\"hotel_country\",\"type\":\"int\"},{\"name\":\"hotel_market\",\"type\":\"int\"}],\"version\":\"1\"}");
+  private static final long serialVersionUID = 6428107291845812192L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Train\",\"namespace\":\"com.bigdata.avro.schema\",\"fields\":[{\"name\":\"date_time\",\"type\":\"string\"},{\"name\":\"site_name\",\"type\":\"int\"},{\"name\":\"posa_continent\",\"type\":\"int\"},{\"name\":\"user_location_country\",\"type\":\"int\"},{\"name\":\"user_location_region\",\"type\":\"int\"},{\"name\":\"user_location_city\",\"type\":\"int\"},{\"name\":\"orig_destination_distance\",\"type\":\"string\"},{\"name\":\"user_id\",\"type\":\"int\"},{\"name\":\"is_mobile\",\"type\":\"int\"},{\"name\":\"is_package\",\"type\":\"int\"},{\"name\":\"channel\",\"type\":\"int\"},{\"name\":\"srch_ci\",\"type\":\"string\"},{\"name\":\"srch_co\",\"type\":\"string\"},{\"name\":\"srch_adults_cnt\",\"type\":\"int\"},{\"name\":\"srch_children_cnt\",\"type\":\"int\"},{\"name\":\"srch_rm_cnt\",\"type\":\"int\"},{\"name\":\"srch_destination_id\",\"type\":\"int\"},{\"name\":\"srch_destination_type_id\",\"type\":\"int\"},{\"name\":\"is_booking\",\"type\":\"int\"},{\"name\":\"cnt\",\"type\":\"int\"},{\"name\":\"hotel_continent\",\"type\":\"int\"},{\"name\":\"hotel_country\",\"type\":\"int\"},{\"name\":\"hotel_market\",\"type\":\"int\"},{\"name\":\"hotel_cluster\",\"type\":\"int\"}],\"version\":\"1\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -71,14 +71,13 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
     return DECODER.decode(b);
   }
 
-  @Deprecated public int id;
   @Deprecated public java.lang.CharSequence date_time;
   @Deprecated public int site_name;
   @Deprecated public int posa_continent;
   @Deprecated public int user_location_country;
   @Deprecated public int user_location_region;
   @Deprecated public int user_location_city;
-  @Deprecated public float orig_destination_distance;
+  @Deprecated public java.lang.CharSequence orig_destination_distance;
   @Deprecated public int user_id;
   @Deprecated public int is_mobile;
   @Deprecated public int is_package;
@@ -90,9 +89,12 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   @Deprecated public int srch_rm_cnt;
   @Deprecated public int srch_destination_id;
   @Deprecated public int srch_destination_type_id;
+  @Deprecated public int is_booking;
+  @Deprecated public int cnt;
   @Deprecated public int hotel_continent;
   @Deprecated public int hotel_country;
   @Deprecated public int hotel_market;
+  @Deprecated public int hotel_cluster;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -103,7 +105,6 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * All-args constructor.
-   * @param id The new value for id
    * @param date_time The new value for date_time
    * @param site_name The new value for site_name
    * @param posa_continent The new value for posa_continent
@@ -122,12 +123,14 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
    * @param srch_rm_cnt The new value for srch_rm_cnt
    * @param srch_destination_id The new value for srch_destination_id
    * @param srch_destination_type_id The new value for srch_destination_type_id
+   * @param is_booking The new value for is_booking
+   * @param cnt The new value for cnt
    * @param hotel_continent The new value for hotel_continent
    * @param hotel_country The new value for hotel_country
    * @param hotel_market The new value for hotel_market
+   * @param hotel_cluster The new value for hotel_cluster
    */
-  public Train(java.lang.Integer id, java.lang.CharSequence date_time, java.lang.Integer site_name, java.lang.Integer posa_continent, java.lang.Integer user_location_country, java.lang.Integer user_location_region, java.lang.Integer user_location_city, java.lang.Float orig_destination_distance, java.lang.Integer user_id, java.lang.Integer is_mobile, java.lang.Integer is_package, java.lang.Integer channel, java.lang.CharSequence srch_ci, java.lang.CharSequence srch_co, java.lang.Integer srch_adults_cnt, java.lang.Integer srch_children_cnt, java.lang.Integer srch_rm_cnt, java.lang.Integer srch_destination_id, java.lang.Integer srch_destination_type_id, java.lang.Integer hotel_continent, java.lang.Integer hotel_country, java.lang.Integer hotel_market) {
-    this.id = id;
+  public Train(java.lang.CharSequence date_time, java.lang.Integer site_name, java.lang.Integer posa_continent, java.lang.Integer user_location_country, java.lang.Integer user_location_region, java.lang.Integer user_location_city, java.lang.CharSequence orig_destination_distance, java.lang.Integer user_id, java.lang.Integer is_mobile, java.lang.Integer is_package, java.lang.Integer channel, java.lang.CharSequence srch_ci, java.lang.CharSequence srch_co, java.lang.Integer srch_adults_cnt, java.lang.Integer srch_children_cnt, java.lang.Integer srch_rm_cnt, java.lang.Integer srch_destination_id, java.lang.Integer srch_destination_type_id, java.lang.Integer is_booking, java.lang.Integer cnt, java.lang.Integer hotel_continent, java.lang.Integer hotel_country, java.lang.Integer hotel_market, java.lang.Integer hotel_cluster) {
     this.date_time = date_time;
     this.site_name = site_name;
     this.posa_continent = posa_continent;
@@ -146,9 +149,12 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
     this.srch_rm_cnt = srch_rm_cnt;
     this.srch_destination_id = srch_destination_id;
     this.srch_destination_type_id = srch_destination_type_id;
+    this.is_booking = is_booking;
+    this.cnt = cnt;
     this.hotel_continent = hotel_continent;
     this.hotel_country = hotel_country;
     this.hotel_market = hotel_market;
+    this.hotel_cluster = hotel_cluster;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -156,28 +162,30 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return id;
-    case 1: return date_time;
-    case 2: return site_name;
-    case 3: return posa_continent;
-    case 4: return user_location_country;
-    case 5: return user_location_region;
-    case 6: return user_location_city;
-    case 7: return orig_destination_distance;
-    case 8: return user_id;
-    case 9: return is_mobile;
-    case 10: return is_package;
-    case 11: return channel;
-    case 12: return srch_ci;
-    case 13: return srch_co;
-    case 14: return srch_adults_cnt;
-    case 15: return srch_children_cnt;
-    case 16: return srch_rm_cnt;
-    case 17: return srch_destination_id;
-    case 18: return srch_destination_type_id;
-    case 19: return hotel_continent;
-    case 20: return hotel_country;
-    case 21: return hotel_market;
+    case 0: return date_time;
+    case 1: return site_name;
+    case 2: return posa_continent;
+    case 3: return user_location_country;
+    case 4: return user_location_region;
+    case 5: return user_location_city;
+    case 6: return orig_destination_distance;
+    case 7: return user_id;
+    case 8: return is_mobile;
+    case 9: return is_package;
+    case 10: return channel;
+    case 11: return srch_ci;
+    case 12: return srch_co;
+    case 13: return srch_adults_cnt;
+    case 14: return srch_children_cnt;
+    case 15: return srch_rm_cnt;
+    case 16: return srch_destination_id;
+    case 17: return srch_destination_type_id;
+    case 18: return is_booking;
+    case 19: return cnt;
+    case 20: return hotel_continent;
+    case 21: return hotel_country;
+    case 22: return hotel_market;
+    case 23: return hotel_cluster;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -186,47 +194,32 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.Integer)value$; break;
-    case 1: date_time = (java.lang.CharSequence)value$; break;
-    case 2: site_name = (java.lang.Integer)value$; break;
-    case 3: posa_continent = (java.lang.Integer)value$; break;
-    case 4: user_location_country = (java.lang.Integer)value$; break;
-    case 5: user_location_region = (java.lang.Integer)value$; break;
-    case 6: user_location_city = (java.lang.Integer)value$; break;
-    case 7: orig_destination_distance = (java.lang.Float)value$; break;
-    case 8: user_id = (java.lang.Integer)value$; break;
-    case 9: is_mobile = (java.lang.Integer)value$; break;
-    case 10: is_package = (java.lang.Integer)value$; break;
-    case 11: channel = (java.lang.Integer)value$; break;
-    case 12: srch_ci = (java.lang.CharSequence)value$; break;
-    case 13: srch_co = (java.lang.CharSequence)value$; break;
-    case 14: srch_adults_cnt = (java.lang.Integer)value$; break;
-    case 15: srch_children_cnt = (java.lang.Integer)value$; break;
-    case 16: srch_rm_cnt = (java.lang.Integer)value$; break;
-    case 17: srch_destination_id = (java.lang.Integer)value$; break;
-    case 18: srch_destination_type_id = (java.lang.Integer)value$; break;
-    case 19: hotel_continent = (java.lang.Integer)value$; break;
-    case 20: hotel_country = (java.lang.Integer)value$; break;
-    case 21: hotel_market = (java.lang.Integer)value$; break;
+    case 0: date_time = (java.lang.CharSequence)value$; break;
+    case 1: site_name = (java.lang.Integer)value$; break;
+    case 2: posa_continent = (java.lang.Integer)value$; break;
+    case 3: user_location_country = (java.lang.Integer)value$; break;
+    case 4: user_location_region = (java.lang.Integer)value$; break;
+    case 5: user_location_city = (java.lang.Integer)value$; break;
+    case 6: orig_destination_distance = (java.lang.CharSequence)value$; break;
+    case 7: user_id = (java.lang.Integer)value$; break;
+    case 8: is_mobile = (java.lang.Integer)value$; break;
+    case 9: is_package = (java.lang.Integer)value$; break;
+    case 10: channel = (java.lang.Integer)value$; break;
+    case 11: srch_ci = (java.lang.CharSequence)value$; break;
+    case 12: srch_co = (java.lang.CharSequence)value$; break;
+    case 13: srch_adults_cnt = (java.lang.Integer)value$; break;
+    case 14: srch_children_cnt = (java.lang.Integer)value$; break;
+    case 15: srch_rm_cnt = (java.lang.Integer)value$; break;
+    case 16: srch_destination_id = (java.lang.Integer)value$; break;
+    case 17: srch_destination_type_id = (java.lang.Integer)value$; break;
+    case 18: is_booking = (java.lang.Integer)value$; break;
+    case 19: cnt = (java.lang.Integer)value$; break;
+    case 20: hotel_continent = (java.lang.Integer)value$; break;
+    case 21: hotel_country = (java.lang.Integer)value$; break;
+    case 22: hotel_market = (java.lang.Integer)value$; break;
+    case 23: hotel_cluster = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
-  }
-
-  /**
-   * Gets the value of the 'id' field.
-   * @return The value of the 'id' field.
-   */
-  public int getId() {
-    return id;
-  }
-
-
-  /**
-   * Sets the value of the 'id' field.
-   * @param value the value to set.
-   */
-  public void setId(int value) {
-    this.id = value;
   }
 
   /**
@@ -335,7 +328,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'orig_destination_distance' field.
    * @return The value of the 'orig_destination_distance' field.
    */
-  public float getOrigDestinationDistance() {
+  public java.lang.CharSequence getOrigDestinationDistance() {
     return orig_destination_distance;
   }
 
@@ -344,7 +337,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
    * Sets the value of the 'orig_destination_distance' field.
    * @param value the value to set.
    */
-  public void setOrigDestinationDistance(float value) {
+  public void setOrigDestinationDistance(java.lang.CharSequence value) {
     this.orig_destination_distance = value;
   }
 
@@ -536,6 +529,40 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
+   * Gets the value of the 'is_booking' field.
+   * @return The value of the 'is_booking' field.
+   */
+  public int getIsBooking() {
+    return is_booking;
+  }
+
+
+  /**
+   * Sets the value of the 'is_booking' field.
+   * @param value the value to set.
+   */
+  public void setIsBooking(int value) {
+    this.is_booking = value;
+  }
+
+  /**
+   * Gets the value of the 'cnt' field.
+   * @return The value of the 'cnt' field.
+   */
+  public int getCnt() {
+    return cnt;
+  }
+
+
+  /**
+   * Sets the value of the 'cnt' field.
+   * @param value the value to set.
+   */
+  public void setCnt(int value) {
+    this.cnt = value;
+  }
+
+  /**
    * Gets the value of the 'hotel_continent' field.
    * @return The value of the 'hotel_continent' field.
    */
@@ -587,6 +614,23 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
+   * Gets the value of the 'hotel_cluster' field.
+   * @return The value of the 'hotel_cluster' field.
+   */
+  public int getHotelCluster() {
+    return hotel_cluster;
+  }
+
+
+  /**
+   * Sets the value of the 'hotel_cluster' field.
+   * @param value the value to set.
+   */
+  public void setHotelCluster(int value) {
+    this.hotel_cluster = value;
+  }
+
+  /**
    * Creates a new Train RecordBuilder.
    * @return A new Train RecordBuilder
    */
@@ -626,14 +670,13 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Train>
     implements org.apache.avro.data.RecordBuilder<Train> {
 
-    private int id;
     private java.lang.CharSequence date_time;
     private int site_name;
     private int posa_continent;
     private int user_location_country;
     private int user_location_region;
     private int user_location_city;
-    private float orig_destination_distance;
+    private java.lang.CharSequence orig_destination_distance;
     private int user_id;
     private int is_mobile;
     private int is_package;
@@ -645,9 +688,12 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
     private int srch_rm_cnt;
     private int srch_destination_id;
     private int srch_destination_type_id;
+    private int is_booking;
+    private int cnt;
     private int hotel_continent;
     private int hotel_country;
     private int hotel_market;
+    private int hotel_cluster;
 
     /** Creates a new Builder */
     private Builder() {
@@ -660,93 +706,101 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
      */
     private Builder(com.bigdata.avro.schema.Train.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.id)) {
-        this.id = data().deepCopy(fields()[0].schema(), other.id);
+      if (isValidValue(fields()[0], other.date_time)) {
+        this.date_time = data().deepCopy(fields()[0].schema(), other.date_time);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.date_time)) {
-        this.date_time = data().deepCopy(fields()[1].schema(), other.date_time);
+      if (isValidValue(fields()[1], other.site_name)) {
+        this.site_name = data().deepCopy(fields()[1].schema(), other.site_name);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.site_name)) {
-        this.site_name = data().deepCopy(fields()[2].schema(), other.site_name);
+      if (isValidValue(fields()[2], other.posa_continent)) {
+        this.posa_continent = data().deepCopy(fields()[2].schema(), other.posa_continent);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.posa_continent)) {
-        this.posa_continent = data().deepCopy(fields()[3].schema(), other.posa_continent);
+      if (isValidValue(fields()[3], other.user_location_country)) {
+        this.user_location_country = data().deepCopy(fields()[3].schema(), other.user_location_country);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
-      if (isValidValue(fields()[4], other.user_location_country)) {
-        this.user_location_country = data().deepCopy(fields()[4].schema(), other.user_location_country);
+      if (isValidValue(fields()[4], other.user_location_region)) {
+        this.user_location_region = data().deepCopy(fields()[4].schema(), other.user_location_region);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.user_location_region)) {
-        this.user_location_region = data().deepCopy(fields()[5].schema(), other.user_location_region);
+      if (isValidValue(fields()[5], other.user_location_city)) {
+        this.user_location_city = data().deepCopy(fields()[5].schema(), other.user_location_city);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.user_location_city)) {
-        this.user_location_city = data().deepCopy(fields()[6].schema(), other.user_location_city);
+      if (isValidValue(fields()[6], other.orig_destination_distance)) {
+        this.orig_destination_distance = data().deepCopy(fields()[6].schema(), other.orig_destination_distance);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
-      if (isValidValue(fields()[7], other.orig_destination_distance)) {
-        this.orig_destination_distance = data().deepCopy(fields()[7].schema(), other.orig_destination_distance);
+      if (isValidValue(fields()[7], other.user_id)) {
+        this.user_id = data().deepCopy(fields()[7].schema(), other.user_id);
         fieldSetFlags()[7] = other.fieldSetFlags()[7];
       }
-      if (isValidValue(fields()[8], other.user_id)) {
-        this.user_id = data().deepCopy(fields()[8].schema(), other.user_id);
+      if (isValidValue(fields()[8], other.is_mobile)) {
+        this.is_mobile = data().deepCopy(fields()[8].schema(), other.is_mobile);
         fieldSetFlags()[8] = other.fieldSetFlags()[8];
       }
-      if (isValidValue(fields()[9], other.is_mobile)) {
-        this.is_mobile = data().deepCopy(fields()[9].schema(), other.is_mobile);
+      if (isValidValue(fields()[9], other.is_package)) {
+        this.is_package = data().deepCopy(fields()[9].schema(), other.is_package);
         fieldSetFlags()[9] = other.fieldSetFlags()[9];
       }
-      if (isValidValue(fields()[10], other.is_package)) {
-        this.is_package = data().deepCopy(fields()[10].schema(), other.is_package);
+      if (isValidValue(fields()[10], other.channel)) {
+        this.channel = data().deepCopy(fields()[10].schema(), other.channel);
         fieldSetFlags()[10] = other.fieldSetFlags()[10];
       }
-      if (isValidValue(fields()[11], other.channel)) {
-        this.channel = data().deepCopy(fields()[11].schema(), other.channel);
+      if (isValidValue(fields()[11], other.srch_ci)) {
+        this.srch_ci = data().deepCopy(fields()[11].schema(), other.srch_ci);
         fieldSetFlags()[11] = other.fieldSetFlags()[11];
       }
-      if (isValidValue(fields()[12], other.srch_ci)) {
-        this.srch_ci = data().deepCopy(fields()[12].schema(), other.srch_ci);
+      if (isValidValue(fields()[12], other.srch_co)) {
+        this.srch_co = data().deepCopy(fields()[12].schema(), other.srch_co);
         fieldSetFlags()[12] = other.fieldSetFlags()[12];
       }
-      if (isValidValue(fields()[13], other.srch_co)) {
-        this.srch_co = data().deepCopy(fields()[13].schema(), other.srch_co);
+      if (isValidValue(fields()[13], other.srch_adults_cnt)) {
+        this.srch_adults_cnt = data().deepCopy(fields()[13].schema(), other.srch_adults_cnt);
         fieldSetFlags()[13] = other.fieldSetFlags()[13];
       }
-      if (isValidValue(fields()[14], other.srch_adults_cnt)) {
-        this.srch_adults_cnt = data().deepCopy(fields()[14].schema(), other.srch_adults_cnt);
+      if (isValidValue(fields()[14], other.srch_children_cnt)) {
+        this.srch_children_cnt = data().deepCopy(fields()[14].schema(), other.srch_children_cnt);
         fieldSetFlags()[14] = other.fieldSetFlags()[14];
       }
-      if (isValidValue(fields()[15], other.srch_children_cnt)) {
-        this.srch_children_cnt = data().deepCopy(fields()[15].schema(), other.srch_children_cnt);
+      if (isValidValue(fields()[15], other.srch_rm_cnt)) {
+        this.srch_rm_cnt = data().deepCopy(fields()[15].schema(), other.srch_rm_cnt);
         fieldSetFlags()[15] = other.fieldSetFlags()[15];
       }
-      if (isValidValue(fields()[16], other.srch_rm_cnt)) {
-        this.srch_rm_cnt = data().deepCopy(fields()[16].schema(), other.srch_rm_cnt);
+      if (isValidValue(fields()[16], other.srch_destination_id)) {
+        this.srch_destination_id = data().deepCopy(fields()[16].schema(), other.srch_destination_id);
         fieldSetFlags()[16] = other.fieldSetFlags()[16];
       }
-      if (isValidValue(fields()[17], other.srch_destination_id)) {
-        this.srch_destination_id = data().deepCopy(fields()[17].schema(), other.srch_destination_id);
+      if (isValidValue(fields()[17], other.srch_destination_type_id)) {
+        this.srch_destination_type_id = data().deepCopy(fields()[17].schema(), other.srch_destination_type_id);
         fieldSetFlags()[17] = other.fieldSetFlags()[17];
       }
-      if (isValidValue(fields()[18], other.srch_destination_type_id)) {
-        this.srch_destination_type_id = data().deepCopy(fields()[18].schema(), other.srch_destination_type_id);
+      if (isValidValue(fields()[18], other.is_booking)) {
+        this.is_booking = data().deepCopy(fields()[18].schema(), other.is_booking);
         fieldSetFlags()[18] = other.fieldSetFlags()[18];
       }
-      if (isValidValue(fields()[19], other.hotel_continent)) {
-        this.hotel_continent = data().deepCopy(fields()[19].schema(), other.hotel_continent);
+      if (isValidValue(fields()[19], other.cnt)) {
+        this.cnt = data().deepCopy(fields()[19].schema(), other.cnt);
         fieldSetFlags()[19] = other.fieldSetFlags()[19];
       }
-      if (isValidValue(fields()[20], other.hotel_country)) {
-        this.hotel_country = data().deepCopy(fields()[20].schema(), other.hotel_country);
+      if (isValidValue(fields()[20], other.hotel_continent)) {
+        this.hotel_continent = data().deepCopy(fields()[20].schema(), other.hotel_continent);
         fieldSetFlags()[20] = other.fieldSetFlags()[20];
       }
-      if (isValidValue(fields()[21], other.hotel_market)) {
-        this.hotel_market = data().deepCopy(fields()[21].schema(), other.hotel_market);
+      if (isValidValue(fields()[21], other.hotel_country)) {
+        this.hotel_country = data().deepCopy(fields()[21].schema(), other.hotel_country);
         fieldSetFlags()[21] = other.fieldSetFlags()[21];
+      }
+      if (isValidValue(fields()[22], other.hotel_market)) {
+        this.hotel_market = data().deepCopy(fields()[22].schema(), other.hotel_market);
+        fieldSetFlags()[22] = other.fieldSetFlags()[22];
+      }
+      if (isValidValue(fields()[23], other.hotel_cluster)) {
+        this.hotel_cluster = data().deepCopy(fields()[23].schema(), other.hotel_cluster);
+        fieldSetFlags()[23] = other.fieldSetFlags()[23];
       }
     }
 
@@ -756,133 +810,102 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
      */
     private Builder(com.bigdata.avro.schema.Train other) {
       super(SCHEMA$);
-      if (isValidValue(fields()[0], other.id)) {
-        this.id = data().deepCopy(fields()[0].schema(), other.id);
+      if (isValidValue(fields()[0], other.date_time)) {
+        this.date_time = data().deepCopy(fields()[0].schema(), other.date_time);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.date_time)) {
-        this.date_time = data().deepCopy(fields()[1].schema(), other.date_time);
+      if (isValidValue(fields()[1], other.site_name)) {
+        this.site_name = data().deepCopy(fields()[1].schema(), other.site_name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.site_name)) {
-        this.site_name = data().deepCopy(fields()[2].schema(), other.site_name);
+      if (isValidValue(fields()[2], other.posa_continent)) {
+        this.posa_continent = data().deepCopy(fields()[2].schema(), other.posa_continent);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.posa_continent)) {
-        this.posa_continent = data().deepCopy(fields()[3].schema(), other.posa_continent);
+      if (isValidValue(fields()[3], other.user_location_country)) {
+        this.user_location_country = data().deepCopy(fields()[3].schema(), other.user_location_country);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.user_location_country)) {
-        this.user_location_country = data().deepCopy(fields()[4].schema(), other.user_location_country);
+      if (isValidValue(fields()[4], other.user_location_region)) {
+        this.user_location_region = data().deepCopy(fields()[4].schema(), other.user_location_region);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.user_location_region)) {
-        this.user_location_region = data().deepCopy(fields()[5].schema(), other.user_location_region);
+      if (isValidValue(fields()[5], other.user_location_city)) {
+        this.user_location_city = data().deepCopy(fields()[5].schema(), other.user_location_city);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.user_location_city)) {
-        this.user_location_city = data().deepCopy(fields()[6].schema(), other.user_location_city);
+      if (isValidValue(fields()[6], other.orig_destination_distance)) {
+        this.orig_destination_distance = data().deepCopy(fields()[6].schema(), other.orig_destination_distance);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.orig_destination_distance)) {
-        this.orig_destination_distance = data().deepCopy(fields()[7].schema(), other.orig_destination_distance);
+      if (isValidValue(fields()[7], other.user_id)) {
+        this.user_id = data().deepCopy(fields()[7].schema(), other.user_id);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.user_id)) {
-        this.user_id = data().deepCopy(fields()[8].schema(), other.user_id);
+      if (isValidValue(fields()[8], other.is_mobile)) {
+        this.is_mobile = data().deepCopy(fields()[8].schema(), other.is_mobile);
         fieldSetFlags()[8] = true;
       }
-      if (isValidValue(fields()[9], other.is_mobile)) {
-        this.is_mobile = data().deepCopy(fields()[9].schema(), other.is_mobile);
+      if (isValidValue(fields()[9], other.is_package)) {
+        this.is_package = data().deepCopy(fields()[9].schema(), other.is_package);
         fieldSetFlags()[9] = true;
       }
-      if (isValidValue(fields()[10], other.is_package)) {
-        this.is_package = data().deepCopy(fields()[10].schema(), other.is_package);
+      if (isValidValue(fields()[10], other.channel)) {
+        this.channel = data().deepCopy(fields()[10].schema(), other.channel);
         fieldSetFlags()[10] = true;
       }
-      if (isValidValue(fields()[11], other.channel)) {
-        this.channel = data().deepCopy(fields()[11].schema(), other.channel);
+      if (isValidValue(fields()[11], other.srch_ci)) {
+        this.srch_ci = data().deepCopy(fields()[11].schema(), other.srch_ci);
         fieldSetFlags()[11] = true;
       }
-      if (isValidValue(fields()[12], other.srch_ci)) {
-        this.srch_ci = data().deepCopy(fields()[12].schema(), other.srch_ci);
+      if (isValidValue(fields()[12], other.srch_co)) {
+        this.srch_co = data().deepCopy(fields()[12].schema(), other.srch_co);
         fieldSetFlags()[12] = true;
       }
-      if (isValidValue(fields()[13], other.srch_co)) {
-        this.srch_co = data().deepCopy(fields()[13].schema(), other.srch_co);
+      if (isValidValue(fields()[13], other.srch_adults_cnt)) {
+        this.srch_adults_cnt = data().deepCopy(fields()[13].schema(), other.srch_adults_cnt);
         fieldSetFlags()[13] = true;
       }
-      if (isValidValue(fields()[14], other.srch_adults_cnt)) {
-        this.srch_adults_cnt = data().deepCopy(fields()[14].schema(), other.srch_adults_cnt);
+      if (isValidValue(fields()[14], other.srch_children_cnt)) {
+        this.srch_children_cnt = data().deepCopy(fields()[14].schema(), other.srch_children_cnt);
         fieldSetFlags()[14] = true;
       }
-      if (isValidValue(fields()[15], other.srch_children_cnt)) {
-        this.srch_children_cnt = data().deepCopy(fields()[15].schema(), other.srch_children_cnt);
+      if (isValidValue(fields()[15], other.srch_rm_cnt)) {
+        this.srch_rm_cnt = data().deepCopy(fields()[15].schema(), other.srch_rm_cnt);
         fieldSetFlags()[15] = true;
       }
-      if (isValidValue(fields()[16], other.srch_rm_cnt)) {
-        this.srch_rm_cnt = data().deepCopy(fields()[16].schema(), other.srch_rm_cnt);
+      if (isValidValue(fields()[16], other.srch_destination_id)) {
+        this.srch_destination_id = data().deepCopy(fields()[16].schema(), other.srch_destination_id);
         fieldSetFlags()[16] = true;
       }
-      if (isValidValue(fields()[17], other.srch_destination_id)) {
-        this.srch_destination_id = data().deepCopy(fields()[17].schema(), other.srch_destination_id);
+      if (isValidValue(fields()[17], other.srch_destination_type_id)) {
+        this.srch_destination_type_id = data().deepCopy(fields()[17].schema(), other.srch_destination_type_id);
         fieldSetFlags()[17] = true;
       }
-      if (isValidValue(fields()[18], other.srch_destination_type_id)) {
-        this.srch_destination_type_id = data().deepCopy(fields()[18].schema(), other.srch_destination_type_id);
+      if (isValidValue(fields()[18], other.is_booking)) {
+        this.is_booking = data().deepCopy(fields()[18].schema(), other.is_booking);
         fieldSetFlags()[18] = true;
       }
-      if (isValidValue(fields()[19], other.hotel_continent)) {
-        this.hotel_continent = data().deepCopy(fields()[19].schema(), other.hotel_continent);
+      if (isValidValue(fields()[19], other.cnt)) {
+        this.cnt = data().deepCopy(fields()[19].schema(), other.cnt);
         fieldSetFlags()[19] = true;
       }
-      if (isValidValue(fields()[20], other.hotel_country)) {
-        this.hotel_country = data().deepCopy(fields()[20].schema(), other.hotel_country);
+      if (isValidValue(fields()[20], other.hotel_continent)) {
+        this.hotel_continent = data().deepCopy(fields()[20].schema(), other.hotel_continent);
         fieldSetFlags()[20] = true;
       }
-      if (isValidValue(fields()[21], other.hotel_market)) {
-        this.hotel_market = data().deepCopy(fields()[21].schema(), other.hotel_market);
+      if (isValidValue(fields()[21], other.hotel_country)) {
+        this.hotel_country = data().deepCopy(fields()[21].schema(), other.hotel_country);
         fieldSetFlags()[21] = true;
       }
-    }
-
-    /**
-      * Gets the value of the 'id' field.
-      * @return The value.
-      */
-    public int getId() {
-      return id;
-    }
-
-
-    /**
-      * Sets the value of the 'id' field.
-      * @param value The value of 'id'.
-      * @return This builder.
-      */
-    public com.bigdata.avro.schema.Train.Builder setId(int value) {
-      validate(fields()[0], value);
-      this.id = value;
-      fieldSetFlags()[0] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'id' field has been set.
-      * @return True if the 'id' field has been set, false otherwise.
-      */
-    public boolean hasId() {
-      return fieldSetFlags()[0];
-    }
-
-
-    /**
-      * Clears the value of the 'id' field.
-      * @return This builder.
-      */
-    public com.bigdata.avro.schema.Train.Builder clearId() {
-      fieldSetFlags()[0] = false;
-      return this;
+      if (isValidValue(fields()[22], other.hotel_market)) {
+        this.hotel_market = data().deepCopy(fields()[22].schema(), other.hotel_market);
+        fieldSetFlags()[22] = true;
+      }
+      if (isValidValue(fields()[23], other.hotel_cluster)) {
+        this.hotel_cluster = data().deepCopy(fields()[23].schema(), other.hotel_cluster);
+        fieldSetFlags()[23] = true;
+      }
     }
 
     /**
@@ -900,9 +923,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setDateTime(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[0], value);
       this.date_time = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[0] = true;
       return this;
     }
 
@@ -911,7 +934,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'date_time' field has been set, false otherwise.
       */
     public boolean hasDateTime() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[0];
     }
 
 
@@ -921,7 +944,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       */
     public com.bigdata.avro.schema.Train.Builder clearDateTime() {
       date_time = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[0] = false;
       return this;
     }
 
@@ -940,9 +963,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSiteName(int value) {
-      validate(fields()[2], value);
+      validate(fields()[1], value);
       this.site_name = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -951,7 +974,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'site_name' field has been set, false otherwise.
       */
     public boolean hasSiteName() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[1];
     }
 
 
@@ -960,7 +983,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSiteName() {
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -979,9 +1002,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setPosaContinent(int value) {
-      validate(fields()[3], value);
+      validate(fields()[2], value);
       this.posa_continent = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -990,7 +1013,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'posa_continent' field has been set, false otherwise.
       */
     public boolean hasPosaContinent() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[2];
     }
 
 
@@ -999,7 +1022,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearPosaContinent() {
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -1018,9 +1041,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setUserLocationCountry(int value) {
-      validate(fields()[4], value);
+      validate(fields()[3], value);
       this.user_location_country = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -1029,7 +1052,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'user_location_country' field has been set, false otherwise.
       */
     public boolean hasUserLocationCountry() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
 
 
@@ -1038,7 +1061,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearUserLocationCountry() {
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -1057,9 +1080,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setUserLocationRegion(int value) {
-      validate(fields()[5], value);
+      validate(fields()[4], value);
       this.user_location_region = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -1068,7 +1091,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'user_location_region' field has been set, false otherwise.
       */
     public boolean hasUserLocationRegion() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[4];
     }
 
 
@@ -1077,7 +1100,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearUserLocationRegion() {
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -1096,9 +1119,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setUserLocationCity(int value) {
-      validate(fields()[6], value);
+      validate(fields()[5], value);
       this.user_location_city = value;
-      fieldSetFlags()[6] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -1107,7 +1130,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'user_location_city' field has been set, false otherwise.
       */
     public boolean hasUserLocationCity() {
-      return fieldSetFlags()[6];
+      return fieldSetFlags()[5];
     }
 
 
@@ -1116,7 +1139,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearUserLocationCity() {
-      fieldSetFlags()[6] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -1124,7 +1147,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * Gets the value of the 'orig_destination_distance' field.
       * @return The value.
       */
-    public float getOrigDestinationDistance() {
+    public java.lang.CharSequence getOrigDestinationDistance() {
       return orig_destination_distance;
     }
 
@@ -1134,10 +1157,10 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'orig_destination_distance'.
       * @return This builder.
       */
-    public com.bigdata.avro.schema.Train.Builder setOrigDestinationDistance(float value) {
-      validate(fields()[7], value);
+    public com.bigdata.avro.schema.Train.Builder setOrigDestinationDistance(java.lang.CharSequence value) {
+      validate(fields()[6], value);
       this.orig_destination_distance = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -1146,7 +1169,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'orig_destination_distance' field has been set, false otherwise.
       */
     public boolean hasOrigDestinationDistance() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[6];
     }
 
 
@@ -1155,7 +1178,8 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearOrigDestinationDistance() {
-      fieldSetFlags()[7] = false;
+      orig_destination_distance = null;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -1174,9 +1198,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setUserId(int value) {
-      validate(fields()[8], value);
+      validate(fields()[7], value);
       this.user_id = value;
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -1185,7 +1209,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'user_id' field has been set, false otherwise.
       */
     public boolean hasUserId() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[7];
     }
 
 
@@ -1194,7 +1218,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearUserId() {
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -1213,9 +1237,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setIsMobile(int value) {
-      validate(fields()[9], value);
+      validate(fields()[8], value);
       this.is_mobile = value;
-      fieldSetFlags()[9] = true;
+      fieldSetFlags()[8] = true;
       return this;
     }
 
@@ -1224,7 +1248,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'is_mobile' field has been set, false otherwise.
       */
     public boolean hasIsMobile() {
-      return fieldSetFlags()[9];
+      return fieldSetFlags()[8];
     }
 
 
@@ -1233,7 +1257,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearIsMobile() {
-      fieldSetFlags()[9] = false;
+      fieldSetFlags()[8] = false;
       return this;
     }
 
@@ -1252,9 +1276,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setIsPackage(int value) {
-      validate(fields()[10], value);
+      validate(fields()[9], value);
       this.is_package = value;
-      fieldSetFlags()[10] = true;
+      fieldSetFlags()[9] = true;
       return this;
     }
 
@@ -1263,7 +1287,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'is_package' field has been set, false otherwise.
       */
     public boolean hasIsPackage() {
-      return fieldSetFlags()[10];
+      return fieldSetFlags()[9];
     }
 
 
@@ -1272,7 +1296,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearIsPackage() {
-      fieldSetFlags()[10] = false;
+      fieldSetFlags()[9] = false;
       return this;
     }
 
@@ -1291,9 +1315,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setChannel(int value) {
-      validate(fields()[11], value);
+      validate(fields()[10], value);
       this.channel = value;
-      fieldSetFlags()[11] = true;
+      fieldSetFlags()[10] = true;
       return this;
     }
 
@@ -1302,7 +1326,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'channel' field has been set, false otherwise.
       */
     public boolean hasChannel() {
-      return fieldSetFlags()[11];
+      return fieldSetFlags()[10];
     }
 
 
@@ -1311,7 +1335,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearChannel() {
-      fieldSetFlags()[11] = false;
+      fieldSetFlags()[10] = false;
       return this;
     }
 
@@ -1330,9 +1354,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchCi(java.lang.CharSequence value) {
-      validate(fields()[12], value);
+      validate(fields()[11], value);
       this.srch_ci = value;
-      fieldSetFlags()[12] = true;
+      fieldSetFlags()[11] = true;
       return this;
     }
 
@@ -1341,7 +1365,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_ci' field has been set, false otherwise.
       */
     public boolean hasSrchCi() {
-      return fieldSetFlags()[12];
+      return fieldSetFlags()[11];
     }
 
 
@@ -1351,7 +1375,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchCi() {
       srch_ci = null;
-      fieldSetFlags()[12] = false;
+      fieldSetFlags()[11] = false;
       return this;
     }
 
@@ -1370,9 +1394,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchCo(java.lang.CharSequence value) {
-      validate(fields()[13], value);
+      validate(fields()[12], value);
       this.srch_co = value;
-      fieldSetFlags()[13] = true;
+      fieldSetFlags()[12] = true;
       return this;
     }
 
@@ -1381,7 +1405,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_co' field has been set, false otherwise.
       */
     public boolean hasSrchCo() {
-      return fieldSetFlags()[13];
+      return fieldSetFlags()[12];
     }
 
 
@@ -1391,7 +1415,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchCo() {
       srch_co = null;
-      fieldSetFlags()[13] = false;
+      fieldSetFlags()[12] = false;
       return this;
     }
 
@@ -1410,9 +1434,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchAdultsCnt(int value) {
-      validate(fields()[14], value);
+      validate(fields()[13], value);
       this.srch_adults_cnt = value;
-      fieldSetFlags()[14] = true;
+      fieldSetFlags()[13] = true;
       return this;
     }
 
@@ -1421,7 +1445,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_adults_cnt' field has been set, false otherwise.
       */
     public boolean hasSrchAdultsCnt() {
-      return fieldSetFlags()[14];
+      return fieldSetFlags()[13];
     }
 
 
@@ -1430,7 +1454,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchAdultsCnt() {
-      fieldSetFlags()[14] = false;
+      fieldSetFlags()[13] = false;
       return this;
     }
 
@@ -1449,9 +1473,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchChildrenCnt(int value) {
-      validate(fields()[15], value);
+      validate(fields()[14], value);
       this.srch_children_cnt = value;
-      fieldSetFlags()[15] = true;
+      fieldSetFlags()[14] = true;
       return this;
     }
 
@@ -1460,7 +1484,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_children_cnt' field has been set, false otherwise.
       */
     public boolean hasSrchChildrenCnt() {
-      return fieldSetFlags()[15];
+      return fieldSetFlags()[14];
     }
 
 
@@ -1469,7 +1493,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchChildrenCnt() {
-      fieldSetFlags()[15] = false;
+      fieldSetFlags()[14] = false;
       return this;
     }
 
@@ -1488,9 +1512,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchRmCnt(int value) {
-      validate(fields()[16], value);
+      validate(fields()[15], value);
       this.srch_rm_cnt = value;
-      fieldSetFlags()[16] = true;
+      fieldSetFlags()[15] = true;
       return this;
     }
 
@@ -1499,7 +1523,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_rm_cnt' field has been set, false otherwise.
       */
     public boolean hasSrchRmCnt() {
-      return fieldSetFlags()[16];
+      return fieldSetFlags()[15];
     }
 
 
@@ -1508,7 +1532,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchRmCnt() {
-      fieldSetFlags()[16] = false;
+      fieldSetFlags()[15] = false;
       return this;
     }
 
@@ -1527,9 +1551,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchDestinationId(int value) {
-      validate(fields()[17], value);
+      validate(fields()[16], value);
       this.srch_destination_id = value;
-      fieldSetFlags()[17] = true;
+      fieldSetFlags()[16] = true;
       return this;
     }
 
@@ -1538,7 +1562,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_destination_id' field has been set, false otherwise.
       */
     public boolean hasSrchDestinationId() {
-      return fieldSetFlags()[17];
+      return fieldSetFlags()[16];
     }
 
 
@@ -1547,7 +1571,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchDestinationId() {
-      fieldSetFlags()[17] = false;
+      fieldSetFlags()[16] = false;
       return this;
     }
 
@@ -1566,9 +1590,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setSrchDestinationTypeId(int value) {
-      validate(fields()[18], value);
+      validate(fields()[17], value);
       this.srch_destination_type_id = value;
-      fieldSetFlags()[18] = true;
+      fieldSetFlags()[17] = true;
       return this;
     }
 
@@ -1577,7 +1601,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'srch_destination_type_id' field has been set, false otherwise.
       */
     public boolean hasSrchDestinationTypeId() {
-      return fieldSetFlags()[18];
+      return fieldSetFlags()[17];
     }
 
 
@@ -1586,7 +1610,85 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearSrchDestinationTypeId() {
+      fieldSetFlags()[17] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'is_booking' field.
+      * @return The value.
+      */
+    public int getIsBooking() {
+      return is_booking;
+    }
+
+
+    /**
+      * Sets the value of the 'is_booking' field.
+      * @param value The value of 'is_booking'.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder setIsBooking(int value) {
+      validate(fields()[18], value);
+      this.is_booking = value;
+      fieldSetFlags()[18] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'is_booking' field has been set.
+      * @return True if the 'is_booking' field has been set, false otherwise.
+      */
+    public boolean hasIsBooking() {
+      return fieldSetFlags()[18];
+    }
+
+
+    /**
+      * Clears the value of the 'is_booking' field.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder clearIsBooking() {
       fieldSetFlags()[18] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'cnt' field.
+      * @return The value.
+      */
+    public int getCnt() {
+      return cnt;
+    }
+
+
+    /**
+      * Sets the value of the 'cnt' field.
+      * @param value The value of 'cnt'.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder setCnt(int value) {
+      validate(fields()[19], value);
+      this.cnt = value;
+      fieldSetFlags()[19] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'cnt' field has been set.
+      * @return True if the 'cnt' field has been set, false otherwise.
+      */
+    public boolean hasCnt() {
+      return fieldSetFlags()[19];
+    }
+
+
+    /**
+      * Clears the value of the 'cnt' field.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder clearCnt() {
+      fieldSetFlags()[19] = false;
       return this;
     }
 
@@ -1605,9 +1707,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setHotelContinent(int value) {
-      validate(fields()[19], value);
+      validate(fields()[20], value);
       this.hotel_continent = value;
-      fieldSetFlags()[19] = true;
+      fieldSetFlags()[20] = true;
       return this;
     }
 
@@ -1616,7 +1718,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'hotel_continent' field has been set, false otherwise.
       */
     public boolean hasHotelContinent() {
-      return fieldSetFlags()[19];
+      return fieldSetFlags()[20];
     }
 
 
@@ -1625,7 +1727,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearHotelContinent() {
-      fieldSetFlags()[19] = false;
+      fieldSetFlags()[20] = false;
       return this;
     }
 
@@ -1644,9 +1746,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setHotelCountry(int value) {
-      validate(fields()[20], value);
+      validate(fields()[21], value);
       this.hotel_country = value;
-      fieldSetFlags()[20] = true;
+      fieldSetFlags()[21] = true;
       return this;
     }
 
@@ -1655,7 +1757,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'hotel_country' field has been set, false otherwise.
       */
     public boolean hasHotelCountry() {
-      return fieldSetFlags()[20];
+      return fieldSetFlags()[21];
     }
 
 
@@ -1664,7 +1766,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearHotelCountry() {
-      fieldSetFlags()[20] = false;
+      fieldSetFlags()[21] = false;
       return this;
     }
 
@@ -1683,9 +1785,9 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder setHotelMarket(int value) {
-      validate(fields()[21], value);
+      validate(fields()[22], value);
       this.hotel_market = value;
-      fieldSetFlags()[21] = true;
+      fieldSetFlags()[22] = true;
       return this;
     }
 
@@ -1694,7 +1796,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'hotel_market' field has been set, false otherwise.
       */
     public boolean hasHotelMarket() {
-      return fieldSetFlags()[21];
+      return fieldSetFlags()[22];
     }
 
 
@@ -1703,7 +1805,46 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public com.bigdata.avro.schema.Train.Builder clearHotelMarket() {
-      fieldSetFlags()[21] = false;
+      fieldSetFlags()[22] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'hotel_cluster' field.
+      * @return The value.
+      */
+    public int getHotelCluster() {
+      return hotel_cluster;
+    }
+
+
+    /**
+      * Sets the value of the 'hotel_cluster' field.
+      * @param value The value of 'hotel_cluster'.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder setHotelCluster(int value) {
+      validate(fields()[23], value);
+      this.hotel_cluster = value;
+      fieldSetFlags()[23] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'hotel_cluster' field has been set.
+      * @return True if the 'hotel_cluster' field has been set, false otherwise.
+      */
+    public boolean hasHotelCluster() {
+      return fieldSetFlags()[23];
+    }
+
+
+    /**
+      * Clears the value of the 'hotel_cluster' field.
+      * @return This builder.
+      */
+    public com.bigdata.avro.schema.Train.Builder clearHotelCluster() {
+      fieldSetFlags()[23] = false;
       return this;
     }
 
@@ -1712,28 +1853,30 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
     public Train build() {
       try {
         Train record = new Train();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.date_time = fieldSetFlags()[1] ? this.date_time : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.site_name = fieldSetFlags()[2] ? this.site_name : (java.lang.Integer) defaultValue(fields()[2]);
-        record.posa_continent = fieldSetFlags()[3] ? this.posa_continent : (java.lang.Integer) defaultValue(fields()[3]);
-        record.user_location_country = fieldSetFlags()[4] ? this.user_location_country : (java.lang.Integer) defaultValue(fields()[4]);
-        record.user_location_region = fieldSetFlags()[5] ? this.user_location_region : (java.lang.Integer) defaultValue(fields()[5]);
-        record.user_location_city = fieldSetFlags()[6] ? this.user_location_city : (java.lang.Integer) defaultValue(fields()[6]);
-        record.orig_destination_distance = fieldSetFlags()[7] ? this.orig_destination_distance : (java.lang.Float) defaultValue(fields()[7]);
-        record.user_id = fieldSetFlags()[8] ? this.user_id : (java.lang.Integer) defaultValue(fields()[8]);
-        record.is_mobile = fieldSetFlags()[9] ? this.is_mobile : (java.lang.Integer) defaultValue(fields()[9]);
-        record.is_package = fieldSetFlags()[10] ? this.is_package : (java.lang.Integer) defaultValue(fields()[10]);
-        record.channel = fieldSetFlags()[11] ? this.channel : (java.lang.Integer) defaultValue(fields()[11]);
-        record.srch_ci = fieldSetFlags()[12] ? this.srch_ci : (java.lang.CharSequence) defaultValue(fields()[12]);
-        record.srch_co = fieldSetFlags()[13] ? this.srch_co : (java.lang.CharSequence) defaultValue(fields()[13]);
-        record.srch_adults_cnt = fieldSetFlags()[14] ? this.srch_adults_cnt : (java.lang.Integer) defaultValue(fields()[14]);
-        record.srch_children_cnt = fieldSetFlags()[15] ? this.srch_children_cnt : (java.lang.Integer) defaultValue(fields()[15]);
-        record.srch_rm_cnt = fieldSetFlags()[16] ? this.srch_rm_cnt : (java.lang.Integer) defaultValue(fields()[16]);
-        record.srch_destination_id = fieldSetFlags()[17] ? this.srch_destination_id : (java.lang.Integer) defaultValue(fields()[17]);
-        record.srch_destination_type_id = fieldSetFlags()[18] ? this.srch_destination_type_id : (java.lang.Integer) defaultValue(fields()[18]);
-        record.hotel_continent = fieldSetFlags()[19] ? this.hotel_continent : (java.lang.Integer) defaultValue(fields()[19]);
-        record.hotel_country = fieldSetFlags()[20] ? this.hotel_country : (java.lang.Integer) defaultValue(fields()[20]);
-        record.hotel_market = fieldSetFlags()[21] ? this.hotel_market : (java.lang.Integer) defaultValue(fields()[21]);
+        record.date_time = fieldSetFlags()[0] ? this.date_time : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.site_name = fieldSetFlags()[1] ? this.site_name : (java.lang.Integer) defaultValue(fields()[1]);
+        record.posa_continent = fieldSetFlags()[2] ? this.posa_continent : (java.lang.Integer) defaultValue(fields()[2]);
+        record.user_location_country = fieldSetFlags()[3] ? this.user_location_country : (java.lang.Integer) defaultValue(fields()[3]);
+        record.user_location_region = fieldSetFlags()[4] ? this.user_location_region : (java.lang.Integer) defaultValue(fields()[4]);
+        record.user_location_city = fieldSetFlags()[5] ? this.user_location_city : (java.lang.Integer) defaultValue(fields()[5]);
+        record.orig_destination_distance = fieldSetFlags()[6] ? this.orig_destination_distance : (java.lang.CharSequence) defaultValue(fields()[6]);
+        record.user_id = fieldSetFlags()[7] ? this.user_id : (java.lang.Integer) defaultValue(fields()[7]);
+        record.is_mobile = fieldSetFlags()[8] ? this.is_mobile : (java.lang.Integer) defaultValue(fields()[8]);
+        record.is_package = fieldSetFlags()[9] ? this.is_package : (java.lang.Integer) defaultValue(fields()[9]);
+        record.channel = fieldSetFlags()[10] ? this.channel : (java.lang.Integer) defaultValue(fields()[10]);
+        record.srch_ci = fieldSetFlags()[11] ? this.srch_ci : (java.lang.CharSequence) defaultValue(fields()[11]);
+        record.srch_co = fieldSetFlags()[12] ? this.srch_co : (java.lang.CharSequence) defaultValue(fields()[12]);
+        record.srch_adults_cnt = fieldSetFlags()[13] ? this.srch_adults_cnt : (java.lang.Integer) defaultValue(fields()[13]);
+        record.srch_children_cnt = fieldSetFlags()[14] ? this.srch_children_cnt : (java.lang.Integer) defaultValue(fields()[14]);
+        record.srch_rm_cnt = fieldSetFlags()[15] ? this.srch_rm_cnt : (java.lang.Integer) defaultValue(fields()[15]);
+        record.srch_destination_id = fieldSetFlags()[16] ? this.srch_destination_id : (java.lang.Integer) defaultValue(fields()[16]);
+        record.srch_destination_type_id = fieldSetFlags()[17] ? this.srch_destination_type_id : (java.lang.Integer) defaultValue(fields()[17]);
+        record.is_booking = fieldSetFlags()[18] ? this.is_booking : (java.lang.Integer) defaultValue(fields()[18]);
+        record.cnt = fieldSetFlags()[19] ? this.cnt : (java.lang.Integer) defaultValue(fields()[19]);
+        record.hotel_continent = fieldSetFlags()[20] ? this.hotel_continent : (java.lang.Integer) defaultValue(fields()[20]);
+        record.hotel_country = fieldSetFlags()[21] ? this.hotel_country : (java.lang.Integer) defaultValue(fields()[21]);
+        record.hotel_market = fieldSetFlags()[22] ? this.hotel_market : (java.lang.Integer) defaultValue(fields()[22]);
+        record.hotel_cluster = fieldSetFlags()[23] ? this.hotel_cluster : (java.lang.Integer) defaultValue(fields()[23]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -1766,8 +1909,6 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.id);
-
     out.writeString(this.date_time);
 
     out.writeInt(this.site_name);
@@ -1780,7 +1921,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
 
     out.writeInt(this.user_location_city);
 
-    out.writeFloat(this.orig_destination_distance);
+    out.writeString(this.orig_destination_distance);
 
     out.writeInt(this.user_id);
 
@@ -1804,11 +1945,17 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
 
     out.writeInt(this.srch_destination_type_id);
 
+    out.writeInt(this.is_booking);
+
+    out.writeInt(this.cnt);
+
     out.writeInt(this.hotel_continent);
 
     out.writeInt(this.hotel_country);
 
     out.writeInt(this.hotel_market);
+
+    out.writeInt(this.hotel_cluster);
 
   }
 
@@ -1817,8 +1964,6 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.id = in.readInt();
-
       this.date_time = in.readString(this.date_time instanceof Utf8 ? (Utf8)this.date_time : null);
 
       this.site_name = in.readInt();
@@ -1831,7 +1976,7 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
 
       this.user_location_city = in.readInt();
 
-      this.orig_destination_distance = in.readFloat();
+      this.orig_destination_distance = in.readString(this.orig_destination_distance instanceof Utf8 ? (Utf8)this.orig_destination_distance : null);
 
       this.user_id = in.readInt();
 
@@ -1855,101 +2000,115 @@ public class Train extends org.apache.avro.specific.SpecificRecordBase implement
 
       this.srch_destination_type_id = in.readInt();
 
+      this.is_booking = in.readInt();
+
+      this.cnt = in.readInt();
+
       this.hotel_continent = in.readInt();
 
       this.hotel_country = in.readInt();
 
       this.hotel_market = in.readInt();
 
+      this.hotel_cluster = in.readInt();
+
     } else {
-      for (int i = 0; i < 22; i++) {
+      for (int i = 0; i < 24; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.id = in.readInt();
-          break;
-
-        case 1:
           this.date_time = in.readString(this.date_time instanceof Utf8 ? (Utf8)this.date_time : null);
           break;
 
-        case 2:
+        case 1:
           this.site_name = in.readInt();
           break;
 
-        case 3:
+        case 2:
           this.posa_continent = in.readInt();
           break;
 
-        case 4:
+        case 3:
           this.user_location_country = in.readInt();
           break;
 
-        case 5:
+        case 4:
           this.user_location_region = in.readInt();
           break;
 
-        case 6:
+        case 5:
           this.user_location_city = in.readInt();
           break;
 
-        case 7:
-          this.orig_destination_distance = in.readFloat();
+        case 6:
+          this.orig_destination_distance = in.readString(this.orig_destination_distance instanceof Utf8 ? (Utf8)this.orig_destination_distance : null);
           break;
 
-        case 8:
+        case 7:
           this.user_id = in.readInt();
           break;
 
-        case 9:
+        case 8:
           this.is_mobile = in.readInt();
           break;
 
-        case 10:
+        case 9:
           this.is_package = in.readInt();
           break;
 
-        case 11:
+        case 10:
           this.channel = in.readInt();
           break;
 
-        case 12:
+        case 11:
           this.srch_ci = in.readString(this.srch_ci instanceof Utf8 ? (Utf8)this.srch_ci : null);
           break;
 
-        case 13:
+        case 12:
           this.srch_co = in.readString(this.srch_co instanceof Utf8 ? (Utf8)this.srch_co : null);
           break;
 
-        case 14:
+        case 13:
           this.srch_adults_cnt = in.readInt();
           break;
 
-        case 15:
+        case 14:
           this.srch_children_cnt = in.readInt();
           break;
 
-        case 16:
+        case 15:
           this.srch_rm_cnt = in.readInt();
           break;
 
-        case 17:
+        case 16:
           this.srch_destination_id = in.readInt();
           break;
 
-        case 18:
+        case 17:
           this.srch_destination_type_id = in.readInt();
           break;
 
+        case 18:
+          this.is_booking = in.readInt();
+          break;
+
         case 19:
-          this.hotel_continent = in.readInt();
+          this.cnt = in.readInt();
           break;
 
         case 20:
-          this.hotel_country = in.readInt();
+          this.hotel_continent = in.readInt();
           break;
 
         case 21:
+          this.hotel_country = in.readInt();
+          break;
+
+        case 22:
           this.hotel_market = in.readInt();
+          break;
+
+        case 23:
+          this.hotel_cluster = in.readInt();
           break;
 
         default:

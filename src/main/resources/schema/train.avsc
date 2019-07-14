@@ -4,7 +4,6 @@
   "name": "Train",
   "version": "1",
   "fields": [
-    {"name": "id", "type": "int"},
     {"name": "date_time", "type": "string"},
     {"name": "site_name", "type": "int"},
     {"name": "posa_continent", "type": "int"},
@@ -23,8 +22,11 @@
     {"name": "srch_rm_cnt", "type": "int"},
     {"name": "srch_destination_id", "type": "int"},
     {"name": "srch_destination_type_id", "type": "int"},
+    {"name": "is_booking", "type": "int"},
+    {"name": "cnt", "type": "int"},
     {"name": "hotel_continent", "type": "int"},
     {"name": "hotel_country", "type": "int"},
-    {"name": "hotel_market", "type": "int"}
+    {"name": "hotel_market", "type": "int"},
+    {"name": "hotel_cluster", "type": "int"}
   ]
 }

@@ -46,6 +46,54 @@ class AvroWriterTest extends Specification {
     }
 
 
+
+    def "create Train Avro record"() {
+
+        given:
+        String baseDir = getBaseDir()
+        String input = baseDir + File.separator + "train.csv"
+        output = File.createTempFile("csv-", ".avro")
+        Schema schema = Train.getClassSchema()
+
+//        input = "/home/vq/Downloads/expedia-hotel-recommendations/destinations.csv"
+//        output =  new File("/home/vq/hadoop/destination.avro")
+
+        when:
+        csvToAvro(input, output.getAbsolutePath(), schema, Train.class)
+
+        then:
+        noExceptionThrown()
+        avroToObj(output, Train.class).size() == 2
+        avroToObj(output, Train.class).get(0).getDateTime().toString() == "2014-08-11 07:46:59"
+
+
+    }
+
+
+    def "create Sample Submission Avro record"() {
+
+        given:
+        String baseDir = getBaseDir()
+        String input = baseDir + File.separator + "sample_submission.csv"
+        output = File.createTempFile("csv-", ".avro")
+        Schema schema = SampleSubmission.getClassSchema()
+
+//        input = "/home/vq/Downloads/expedia-hotel-recommendations/destinations.csv"
+//        output =  new File("/home/vq/hadoop/destination.avro")
+
+        when:
+        csvToAvro(input, output.getAbsolutePath(), schema, SampleSubmission.class)
+
+        then:
+        noExceptionThrown()
+        avroToObj(output, SampleSubmission.class).size() == 9
+        avroToObj(output, SampleSubmission.class).get(0).getId()== 0
+        avroToObj(output, SampleSubmission.class).get(0).getHotelCluster().toString() == "99 1"
+
+    }
+
+
+
     def "create Test Avro record"() {
 
         given:
