@@ -20,7 +20,6 @@ class ParquetWriterTest extends Specification {
 
         given:
         ParquetDataWorker<Destination> reader = new ParquetDataWorker<>()
-
         String baseDir = getBaseDir()
         String input = baseDir + File.separator + "destinations.csv"
         output = File.createTempFile("csv-", ".parquet")
@@ -99,6 +98,7 @@ class ParquetWriterTest extends Specification {
         output = File.createTempFile("csv-", ".parquet")
         Schema schema = Train.getClassSchema()
 
+
         when:
         ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, Train.class)
 
@@ -148,6 +148,7 @@ class ParquetWriterTest extends Specification {
         String input = baseDir + File.separator + "sample_submission.csv"
         output = File.createTempFile("csv-", ".parquet")
         Schema schema = SampleSubmission.getClassSchema()
+
 
         when:
         ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, SampleSubmission.class)

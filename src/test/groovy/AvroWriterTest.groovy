@@ -1,18 +1,21 @@
-import com.bigdata.avro.schema.*
-import com.bigdata.avro.utils.AvroDataWorker
+import com.bigdata.avro.schema.Destination
+import com.bigdata.avro.schema.SampleSubmission
+import com.bigdata.avro.schema.Test
+import com.bigdata.avro.schema.Train
 import org.apache.avro.Schema
 import org.apache.commons.io.FileUtils
 import spock.lang.Specification
 
 import java.nio.file.Paths
 
-import static com.bigdata.avro.utils.AvroDataWorker.*
+import static com.bigdata.avro.utils.AvroDataWorker.avroToObj
+import static com.bigdata.avro.utils.AvroDataWorker.csvToAvro
 
 class AvroWriterTest extends Specification {
     def output
 
     def cleanup() {
-        FileUtils.deleteQuietly(output as File)
+         FileUtils.deleteQuietly(output as File)
     }
 
 
@@ -24,10 +27,6 @@ class AvroWriterTest extends Specification {
         output = File.createTempFile("csv-", ".avro")
 
         Schema schema = Destination.getClassSchema()
-
-
-//        input = "/home/vq/Downloads/expedia-hotel-recommendations/destinations.csv"
-//        output =  new File("/home/vq/hadoop/destination.avro")
 
         when:
         csvToAvro(input, output.getAbsolutePath(), schema, Destination.class)
@@ -55,17 +54,43 @@ class AvroWriterTest extends Specification {
         output = File.createTempFile("csv-", ".avro")
         Schema schema = Train.getClassSchema()
 
-//        input = "/home/vq/Downloads/expedia-hotel-recommendations/destinations.csv"
-//        output =  new File("/home/vq/hadoop/destination.avro")
-
         when:
         csvToAvro(input, output.getAbsolutePath(), schema, Train.class)
 
         then:
         noExceptionThrown()
         avroToObj(output, Train.class).size() == 2
-        avroToObj(output, Train.class).get(0).getDateTime().toString() == "2014-08-11 07:46:59"
+        avroToObj(output, Train.class).get(index).get("date_time").toString() == date_time as String
+        avroToObj(output, Train.class).get(index).get("site_name").toString() == site_name as String
+        avroToObj(output, Train.class).get(index).get("posa_continent").toString() == posa_continent as String
+        avroToObj(output, Train.class).get(index).get("user_location_country").toString() == user_location_country as String
+        avroToObj(output, Train.class).get(index).get("user_location_region").toString() == user_location_region as String
+        avroToObj(output, Train.class).get(index).get("user_location_city").toString() == user_location_city as String
+        avroToObj(output, Train.class).get(index).get("orig_destination_distance").toString() == orig_destination_distance as String
+        avroToObj(output, Train.class).get(index).get("user_id").toString() == user_id as String
+        avroToObj(output, Train.class).get(index).get("is_mobile").toString() == is_mobile as String
+        avroToObj(output, Train.class).get(index).get("is_package").toString() == is_package as String
+        avroToObj(output, Train.class).get(index).get("channel").toString() == channel as String
+        avroToObj(output, Train.class).get(index).get("srch_ci").toString() == srch_ci as String
+        avroToObj(output, Train.class).get(index).get("srch_co").toString() == srch_co as String
+        avroToObj(output, Train.class).get(index).get("srch_adults_cnt").toString() == srch_adults_cnt as String
+        avroToObj(output, Train.class).get(index).get("srch_children_cnt").toString() == srch_children_cnt as String
+        avroToObj(output, Train.class).get(index).get("srch_rm_cnt").toString() == srch_rm_cnt as String
+        avroToObj(output, Train.class).get(index).get("srch_destination_id").toString() == srch_destination_id as String
+        avroToObj(output, Train.class).get(index).get("srch_destination_type_id").toString() == srch_destination_type_id as String
+        avroToObj(output, Train.class).get(index).get("is_booking").toString() == is_booking as String
+        avroToObj(output, Train.class).get(index).get("cnt").toString() == cnt as String
+        avroToObj(output, Train.class).get(index).get("hotel_country").toString() == hotel_country as String
+        avroToObj(output, Train.class).get(index).get("hotel_continent").toString() == hotel_continent as String
+        avroToObj(output, Train.class).get(index).get("hotel_country").toString() == hotel_country as String
+        avroToObj(output, Train.class).get(index).get("hotel_cluster").toString() == hotel_cluster as String
+        avroToObj(output, Train.class).get(index).get("hotel_market").toString() == hotel_market as String
 
+
+        where:
+        index | date_time             | site_name | posa_continent | user_location_country | user_location_region | user_location_city | orig_destination_distance | user_id | is_mobile | is_package | channel | srch_ci      | srch_co      | srch_adults_cnt | srch_children_cnt | srch_rm_cnt | srch_destination_id | srch_destination_type_id | is_booking | cnt | hotel_continent | hotel_country | hotel_market | hotel_cluster
+        0     | "2014-08-11 07:46:59" | 2         | 3              | 66                    | 348                  | 48862              | "2234.2641"               | 12      | 0         | 1          | 9       | "2014-08-27" | "2014-08-31" | 2               | 0                 | 1           | 8250                | 1                        | 0          | 3   | 2               | 50            | 628          | 1
+        1     | "2014-08-11 08:22:12" | 2         | 3              | 66                    | 348                  | 48862              | ""                        | 12      | 0         | 1          | 9       | "2014-08-29" | "2014-09-02" | 2               | 0                 | 1           | 8250                | 1                        | 1          | 1   | 2               | 50            | 628          | 1
 
     }
 
@@ -77,9 +102,6 @@ class AvroWriterTest extends Specification {
         String input = baseDir + File.separator + "sample_submission.csv"
         output = File.createTempFile("csv-", ".avro")
         Schema schema = SampleSubmission.getClassSchema()
-
-//        input = "/home/vq/Downloads/expedia-hotel-recommendations/destinations.csv"
-//        output =  new File("/home/vq/hadoop/destination.avro")
 
         when:
         csvToAvro(input, output.getAbsolutePath(), schema, SampleSubmission.class)
@@ -101,8 +123,6 @@ class AvroWriterTest extends Specification {
         String input = baseDir + File.separator + "test.csv"
         output = File.createTempFile("csv-", ".avro")
 
-//        input = "/home/vq/Downloads/expedia-hotel-recommendations/test.csv"
-//        output =  new File("/home/vq/hadoop/test.avro")
 
         Schema schema = Test.getClassSchema()
 
