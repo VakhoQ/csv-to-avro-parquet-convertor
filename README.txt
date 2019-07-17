@@ -10,5 +10,5 @@ Build:
 - mvn clean package
 
 Usage:
-- AvroDataWorker to convert SVN to Avro.
-- ParquetDataWorker to convert SVN to AVRO
+- AvroDataWorker to convert CSV to Avro.
+- ParquetDataWorker to convert CSV to AVRO
