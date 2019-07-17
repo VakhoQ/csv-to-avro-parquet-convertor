@@ -1,5 +1,6 @@
-package com.bigdata.avro.utils;
+package com.bigdata.utils;
 
+import com.bigdata.exceptions.ParquetConvertingException;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.specific.SpecificRecordBase;
@@ -8,6 +9,9 @@ import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.parquet.avro.AvroParquetReader;
 import org.apache.parquet.avro.AvroParquetWriter;
 import org.apache.parquet.hadoop.ParquetFileWriter;
@@ -19,14 +23,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+
+/**
+ * Class that converts SVN to AVRO
+ * @param <T> T type of wrapper.
+ */
 public class ParquetDataWorker<T> {
 
-    static Logger logger = Logger.getLogger(ParquetDataWorker.class.getName());
+    private static final Logger logger = LogManager.getLogger(ParquetDataWorker.class.getName());
 
-    public static  <T> List<T> read(File input) throws Exception {
+    /**
+     *
+     * @param input pqrquet file
+     * @param <T> Generic type
+     * @return List of Generic results
+     * @throws ParquetConvertingException
+     */
+    public static  <T> List<T> parquetToObj(File input) throws ParquetConvertingException {
 
         logger.log(Level.INFO, "reading parquet file");
 
@@ -42,32 +56,40 @@ public class ParquetDataWorker<T> {
             while ((record = reader.read()) != null) {
                 result.add(record);
             }
-
-
         }catch (Exception e){
-                logger.log(Level.SEVERE, "error",e );
+                logger.log(Level.ERROR, "error",e );
+                throw new ParquetConvertingException("can't convert parquet to obj", e);
         }finally {
             if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    logger.log(Level.SEVERE, "error", e);
+                    logger.log(Level.ERROR, "error", e);
                 }
             }
         }
         return result;
     }
 
-    public static <T extends SpecificRecordBase> void csvToParquet(String inputPath, String outputPath, Schema schema, Class<T> clazz) throws Exception {
+    /**
+     * CVN to Parquet
+     * @param inputPath input path
+     * @param outputPath out path
+     * @param schema schema of wrapper
+     * @param <T> Generic type
+     * @throws ParquetConvertingException if process fails
+     */
+    public static <T extends SpecificRecordBase> void csvToParquet(String inputPath, String outputPath, Schema schema) throws ParquetConvertingException {
 
         logger.log(Level.INFO, "csv to parquet");
 
         Path path = new Path(outputPath);
         ParquetWriter<GenericData.Record> writer = null;
         File theFile = new File(inputPath);
-        LineIterator it = FileUtils.lineIterator(theFile, "UTF-8");
+        LineIterator it = null;
 
         try {
+            it = FileUtils.lineIterator(theFile, "UTF-8");
             writer = AvroParquetWriter.
                     <GenericData.Record>builder(path)
                     .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
@@ -112,19 +134,20 @@ public class ParquetDataWorker<T> {
             }
 
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "error", e);
+            logger.log(Level.ERROR, "can't convert csv to parquet", e);
+            throw new ParquetConvertingException("can't convert csv to parquet", e);
         } finally {
             if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
-                    logger.log(Level.SEVERE, "error", e);
+                    logger.log(Level.ERROR, "error", e);
                 }
             }
             try {
                 it.close();
             } catch (IOException e) {
-                logger.log(Level.SEVERE, "error", e);
+                logger.log(Level.ERROR, "error", e);
             }
         }
 

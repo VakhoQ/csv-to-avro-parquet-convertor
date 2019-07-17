@@ -1,6 +1,6 @@
-package com.bigdata.avro.utils;
+package com.bigdata.utils;
 
-import com.bigdata.avro.schema.Destination;
+import com.bigdata.exceptions.AvroConvertingException;
 import com.google.common.collect.Streams;
 import org.apache.avro.Schema;
 import org.apache.avro.file.DataFileReader;
@@ -15,31 +15,44 @@ import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.stream.Collectors;
 
+/**
+ * Class that converts SVN to AVRO
+ */
 public class AvroDataWorker {
 
-    static Logger logger = Logger.getLogger(ParquetDataWorker.class.getName());
+    private static final Logger logger = LogManager.getLogger(ParquetDataWorker.class.getName());
 
 
-    public static <T extends SpecificRecordBase> void csvToAvro(String inputPath, String outputPath, Schema schema, Class<T> clazz) throws Exception {
+    /**
+     * Converts SVN to Avro.
+     * @param inputPath input path of document
+     * @param outputPath output path of the document
+     * @param schema schema of the document
+     * @param clazz class of the concrete wrapper object
+     * @param <T> Generic Record Type
+     * @throws AvroConvertingException if process is failed
+     */
+    public static <T extends SpecificRecordBase> void csvToAvro(String inputPath, String outputPath, Schema schema, Class<T> clazz) throws AvroConvertingException {
 
-        logger.log(Level.INFO, "csv to schema converting started");
-
+        logger.log( Level.INFO, "csv to schema converting started");
         DatumWriter<T> userDatumWriter = new SpecificDatumWriter<>(clazz);
         DataFileWriter<T> dataFileWriter = new DataFileWriter<>(userDatumWriter);
-        dataFileWriter.create(schema, new File(outputPath));
-        LineIterator it = FileUtils.lineIterator(new File(inputPath), "UTF-8");
-        String header = it.nextLine();
-        String[] headerComp = header.split(",");
+        LineIterator it = null;
 
         try {
+            dataFileWriter.create(schema, new File(outputPath));
+            it = FileUtils.lineIterator(new File(inputPath), "UTF-8");
+            String header = it.nextLine();
+            String[] headerComp = header.split(",");
             while (it.hasNext()) {
                 String line = it.nextLine();
                 String[] lineComponents = line.split(",");
@@ -67,38 +80,41 @@ public class AvroDataWorker {
                 }
                 dataFileWriter.append(dest);
             }
-        } finally {
-            it.close();
+        }catch (Exception e){
+            logger.error("can't convert csv to avro", e);
+            throw new AvroConvertingException("can't convert json to schema record", e);
         }
-        dataFileWriter.flush();
-        dataFileWriter.close();
+        finally {
+            try {
+                it.close();
+                dataFileWriter.close();
+            } catch (IOException e) {
+                logger.error("can't close reader/writers ", e);
+            }
+        }
+
 
     }
 
-    private static Object getLineComponent(String obj) {
 
-
-//        logger.log(Level.INFO, "converting value " + obj);
+    /**
+     * Conevrts avro to Java object
+     * @param input avro file
+     * @param clazz class of object wrapper
+     * @param <T> Generic type
+     * @return list of Records
+     * @throws AvroConvertingException if process failed
+     */
+    public static <T extends SpecificRecordBase> List<T> avroToObj(File input, Class<T> clazz) throws AvroConvertingException {
         try {
-            return Integer.parseInt(obj);
-        } catch (Exception e) {
-            logger.log(Level.FINE, "data is not integer");
+            DatumReader<T> userDatumReader = new SpecificDatumReader<>(clazz);
+            DataFileReader<T> dataFileReader = new DataFileReader<>(input, userDatumReader);
+            return Streams.stream(dataFileReader.iterator()).collect(Collectors.toList());
+        }catch (Exception e){
+            logger.error("can't convert avro to obj", e);
+            throw new AvroConvertingException("can't convert avro to obj", e);
         }
 
-        try {
-            return Float.parseFloat(obj);
-        } catch (Exception e) {
-            logger.log(Level.FINE, "data is not float");
-        }
-
-
-        return obj;
-    }
-
-    public static <T extends SpecificRecordBase> List<T> avroToObj(File input, Class<T> clazz) throws Exception {
-        DatumReader<T> userDatumReader = new SpecificDatumReader<>(clazz);
-        DataFileReader<T> dataFileReader = new DataFileReader<>(input, userDatumReader);
-        return Streams.stream(dataFileReader.iterator()).collect(Collectors.toList());
     }
 
     /**
@@ -107,9 +123,9 @@ public class AvroDataWorker {
      * @param json   json in String
      * @param schema Schema object
      * @return Generic record
-     * @throws Exception if we cant parse json and can't convert to Generic record
+     * @throws AvroConvertingException if we cant parse json and can't convert to Generic record
      */
-    public static GenericRecord fromJsonToAvro(String json, Schema schema) throws Exception {
+    public static GenericRecord fromJsonToAvro(String json, Schema schema) throws AvroConvertingException {
 
         try {
             InputStream input = new ByteArrayInputStream(json.getBytes());
@@ -132,7 +148,8 @@ public class AvroDataWorker {
             logger.log(Level.INFO, "converted from json to schema");
             return genericRecordDatumReader.read(null, binaryDecoder);
         } catch (Exception e) {
-            throw new Exception("can't convert json to schema record", e);
+            logger.error("can't convert json to schema record", e);
+            throw new AvroConvertingException("can't convert json to schema record", e);
         }
     }
 

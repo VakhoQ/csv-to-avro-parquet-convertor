@@ -2,7 +2,7 @@ import com.bigdata.avro.schema.Destination
 import com.bigdata.avro.schema.SampleSubmission
 import com.bigdata.avro.schema.Test
 import com.bigdata.avro.schema.Train
-import com.bigdata.avro.utils.ParquetDataWorker
+import com.bigdata.utils.ParquetDataWorker
 import org.apache.avro.Schema
 import org.apache.commons.io.FileUtils
 import spock.lang.Specification
@@ -26,17 +26,17 @@ class ParquetWriterTest extends Specification {
         Schema schema = Destination.getClassSchema()
 
         when:
-        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, Destination.class)
+        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema)
 
         then:
         noExceptionThrown()
-        reader.read(output).size() == 9
-        reader.read(output).get(0).getSrchDestinationId() == 0
-        reader.read(output).get(1).getSrchDestinationId() == 1
-        reader.read(output).get(0).getD1().toString() == "-2.19865708695"
-        reader.read(output).get(1).getD1().toString() == "-2.18169033283"
-        reader.read(output).get(2).getD1().toString() == "-2.18348974514"
-        reader.read(output).get(3).getD1().toString() == "-2.17740922654"
+        reader.parquetToObj(output).size() == 9
+        reader.parquetToObj(output).get(0).getSrchDestinationId() == 0
+        reader.parquetToObj(output).get(1).getSrchDestinationId() == 1
+        reader.parquetToObj(output).get(0).getD1().toString() == "-2.19865708695"
+        reader.parquetToObj(output).get(1).getD1().toString() == "-2.18169033283"
+        reader.parquetToObj(output).get(2).getD1().toString() == "-2.18348974514"
+        reader.parquetToObj(output).get(3).getD1().toString() == "-2.17740922654"
 
     }
 
@@ -52,32 +52,32 @@ class ParquetWriterTest extends Specification {
         Schema schema = Test.getClassSchema()
 
         when:
-        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, Test.class)
+        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema)
 
         then:
         noExceptionThrown()
-        reader.read(output).size() == 3
-        reader.read(output).get(index).get("date_time").toString() == date_time as String
-        reader.read(output).get(index).get("site_name").toString() == site_name as String
-        reader.read(output).get(index).get("posa_continent").toString() == posa_continent as String
-        reader.read(output).get(index).get("user_location_country").toString() == user_location_country as String
-        reader.read(output).get(index).get("user_location_region").toString() == user_location_region as String
-        reader.read(output).get(index).get("user_location_city").toString() == user_location_city as String
-        reader.read(output).get(index).get("orig_destination_distance").toString() == orig_destination_distance as String
-        reader.read(output).get(index).get("user_id").toString() == user_id as String
-        reader.read(output).get(index).get("is_mobile").toString() == is_mobile as String
-        reader.read(output).get(index).get("is_package").toString() == is_package as String
-        reader.read(output).get(index).get("channel").toString() == channel as String
-        reader.read(output).get(index).get("srch_ci").toString() == srch_ci as String
-        reader.read(output).get(index).get("srch_co").toString() == srch_co as String
-        reader.read(output).get(index).get("srch_adults_cnt").toString() == srch_adults_cnt as String
-        reader.read(output).get(index).get("srch_children_cnt").toString() == srch_children_cnt as String
-        reader.read(output).get(index).get("srch_rm_cnt").toString() == srch_rm_cnt as String
-        reader.read(output).get(index).get("srch_destination_id").toString() == srch_destination_id as String
-        reader.read(output).get(index).get("srch_destination_type_id").toString() == srch_destination_type_id as String
-        reader.read(output).get(index).get("hotel_continent").toString() == hotel_continent as String
-        reader.read(output).get(index).get("hotel_country").toString() == hotel_country as String
-        reader.read(output).get(index).get("hotel_market").toString() == hotel_market as String
+        reader.parquetToObj(output).size() == 3
+        reader.parquetToObj(output).get(index).get("date_time").toString() == date_time as String
+        reader.parquetToObj(output).get(index).get("site_name").toString() == site_name as String
+        reader.parquetToObj(output).get(index).get("posa_continent").toString() == posa_continent as String
+        reader.parquetToObj(output).get(index).get("user_location_country").toString() == user_location_country as String
+        reader.parquetToObj(output).get(index).get("user_location_region").toString() == user_location_region as String
+        reader.parquetToObj(output).get(index).get("user_location_city").toString() == user_location_city as String
+        reader.parquetToObj(output).get(index).get("orig_destination_distance").toString() == orig_destination_distance as String
+        reader.parquetToObj(output).get(index).get("user_id").toString() == user_id as String
+        reader.parquetToObj(output).get(index).get("is_mobile").toString() == is_mobile as String
+        reader.parquetToObj(output).get(index).get("is_package").toString() == is_package as String
+        reader.parquetToObj(output).get(index).get("channel").toString() == channel as String
+        reader.parquetToObj(output).get(index).get("srch_ci").toString() == srch_ci as String
+        reader.parquetToObj(output).get(index).get("srch_co").toString() == srch_co as String
+        reader.parquetToObj(output).get(index).get("srch_adults_cnt").toString() == srch_adults_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_children_cnt").toString() == srch_children_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_rm_cnt").toString() == srch_rm_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_destination_id").toString() == srch_destination_id as String
+        reader.parquetToObj(output).get(index).get("srch_destination_type_id").toString() == srch_destination_type_id as String
+        reader.parquetToObj(output).get(index).get("hotel_continent").toString() == hotel_continent as String
+        reader.parquetToObj(output).get(index).get("hotel_country").toString() == hotel_country as String
+        reader.parquetToObj(output).get(index).get("hotel_market").toString() == hotel_market as String
 
 
         where:
@@ -100,36 +100,36 @@ class ParquetWriterTest extends Specification {
 
 
         when:
-        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, Train.class)
+        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema)
 
         then:
         noExceptionThrown()
-        reader.read(output).size() == 2
-        reader.read(output).get(index).get("date_time").toString() == date_time as String
-        reader.read(output).get(index).get("site_name").toString() == site_name as String
-        reader.read(output).get(index).get("posa_continent").toString() == posa_continent as String
-        reader.read(output).get(index).get("user_location_country").toString() == user_location_country as String
-        reader.read(output).get(index).get("user_location_region").toString() == user_location_region as String
-        reader.read(output).get(index).get("user_location_city").toString() == user_location_city as String
-        reader.read(output).get(index).get("orig_destination_distance").toString() == orig_destination_distance as String
-        reader.read(output).get(index).get("user_id").toString() == user_id as String
-        reader.read(output).get(index).get("is_mobile").toString() == is_mobile as String
-        reader.read(output).get(index).get("is_package").toString() == is_package as String
-        reader.read(output).get(index).get("channel").toString() == channel as String
-        reader.read(output).get(index).get("srch_ci").toString() == srch_ci as String
-        reader.read(output).get(index).get("srch_co").toString() == srch_co as String
-        reader.read(output).get(index).get("srch_adults_cnt").toString() == srch_adults_cnt as String
-        reader.read(output).get(index).get("srch_children_cnt").toString() == srch_children_cnt as String
-        reader.read(output).get(index).get("srch_rm_cnt").toString() == srch_rm_cnt as String
-        reader.read(output).get(index).get("srch_destination_id").toString() == srch_destination_id as String
-        reader.read(output).get(index).get("srch_destination_type_id").toString() == srch_destination_type_id as String
-        reader.read(output).get(index).get("is_booking").toString() == is_booking as String
-        reader.read(output).get(index).get("cnt").toString() == cnt as String
-        reader.read(output).get(index).get("hotel_country").toString() == hotel_country as String
-        reader.read(output).get(index).get("hotel_continent").toString() == hotel_continent as String
-        reader.read(output).get(index).get("hotel_country").toString() == hotel_country as String
-        reader.read(output).get(index).get("hotel_market").toString() == hotel_market as String
-        reader.read(output).get(index).get("hotel_cluster").toString() == hotel_cluster as String
+        reader.parquetToObj(output).size() == 2
+        reader.parquetToObj(output).get(index).get("date_time").toString() == date_time as String
+        reader.parquetToObj(output).get(index).get("site_name").toString() == site_name as String
+        reader.parquetToObj(output).get(index).get("posa_continent").toString() == posa_continent as String
+        reader.parquetToObj(output).get(index).get("user_location_country").toString() == user_location_country as String
+        reader.parquetToObj(output).get(index).get("user_location_region").toString() == user_location_region as String
+        reader.parquetToObj(output).get(index).get("user_location_city").toString() == user_location_city as String
+        reader.parquetToObj(output).get(index).get("orig_destination_distance").toString() == orig_destination_distance as String
+        reader.parquetToObj(output).get(index).get("user_id").toString() == user_id as String
+        reader.parquetToObj(output).get(index).get("is_mobile").toString() == is_mobile as String
+        reader.parquetToObj(output).get(index).get("is_package").toString() == is_package as String
+        reader.parquetToObj(output).get(index).get("channel").toString() == channel as String
+        reader.parquetToObj(output).get(index).get("srch_ci").toString() == srch_ci as String
+        reader.parquetToObj(output).get(index).get("srch_co").toString() == srch_co as String
+        reader.parquetToObj(output).get(index).get("srch_adults_cnt").toString() == srch_adults_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_children_cnt").toString() == srch_children_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_rm_cnt").toString() == srch_rm_cnt as String
+        reader.parquetToObj(output).get(index).get("srch_destination_id").toString() == srch_destination_id as String
+        reader.parquetToObj(output).get(index).get("srch_destination_type_id").toString() == srch_destination_type_id as String
+        reader.parquetToObj(output).get(index).get("is_booking").toString() == is_booking as String
+        reader.parquetToObj(output).get(index).get("cnt").toString() == cnt as String
+        reader.parquetToObj(output).get(index).get("hotel_country").toString() == hotel_country as String
+        reader.parquetToObj(output).get(index).get("hotel_continent").toString() == hotel_continent as String
+        reader.parquetToObj(output).get(index).get("hotel_country").toString() == hotel_country as String
+        reader.parquetToObj(output).get(index).get("hotel_market").toString() == hotel_market as String
+        reader.parquetToObj(output).get(index).get("hotel_cluster").toString() == hotel_cluster as String
 
 
         where:
@@ -151,12 +151,12 @@ class ParquetWriterTest extends Specification {
 
 
         when:
-        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema, SampleSubmission.class)
+        ParquetDataWorker.csvToParquet(input, output.getAbsolutePath(), schema)
 
         then:
         noExceptionThrown()
-        reader.read(output).size() == 9
-        reader.read(output).get(0).getAt("id") == 0
+        reader.parquetToObj(output).size() == 9
+        reader.parquetToObj(output).get(0).getAt("id") == 0
 
     }
 

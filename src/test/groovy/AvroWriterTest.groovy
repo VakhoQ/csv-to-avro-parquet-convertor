@@ -8,8 +8,8 @@ import spock.lang.Specification
 
 import java.nio.file.Paths
 
-import static com.bigdata.avro.utils.AvroDataWorker.avroToObj
-import static com.bigdata.avro.utils.AvroDataWorker.csvToAvro
+import static com.bigdata.utils.AvroDataWorker.avroToObj
+import static com.bigdata.utils.AvroDataWorker.csvToAvro
 
 class AvroWriterTest extends Specification {
     def output
