@@ -169,11 +169,25 @@
                         <configuration>
                             <sources>
                                 <source>src/test/groovy</source>
-                                <source>src/gen/java</source>
-                                <source>src/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
+
+
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/gen/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+
+
                 </executions>
             </plugin>
 
@@ -204,7 +218,7 @@
                             <goal>schema</goal>
                         </goals>
                         <configuration>
-                            <sourceDirectory>src/test/resources/schema/</sourceDirectory>
+                            <sourceDirectory>src/main/resources/schema/</sourceDirectory>
                             <outputDirectory>src/gen/java/</outputDirectory>
                         </configuration>
                     </execution>
